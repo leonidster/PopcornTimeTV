@@ -63,7 +63,8 @@ class ExtendedSubtitleSelectionTableViewController: UITableViewController {
             for (language) in allLanguages{
                         let action = UIAlertAction(title: language, style: .default) { _ in
                             // subtitles api needs to be updated for this to work
-                            self.currentSubtitle = alternateSubtiles.first
+                            let alternateSubtiles = self.allSubtitles[language]
+                            self.currentSubtitle = alternateSubtiles?.first
                             cell?.detailTextLabel?.text = language
                             tableView.reloadSections(IndexSet(arrayLiteral: 1), with: .fade)
                             self.delegate?.didSelectSubtitle(self.currentSubtitle)
